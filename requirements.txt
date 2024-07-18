@@ -38,7 +38,7 @@ dataflows-tabulator==1.54.3
 datapackage==1.15.4
 debugpy==1.8.2
 decorator==5.1.1
-Django==5.0.1
+Django
 django-cors-headers==4.3.1
 django-unfold==0.28.1
 djangorestframework==3.15.1
