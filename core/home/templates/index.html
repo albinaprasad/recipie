@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% block start%}
+
+<html>
+    <body>
+
+        <table class= "container">
+            <tr>
+                {% for peop in people %}
+              <th>sno</th>
+              <th>name</th>
+              <th>age</th>
+            </tr>
+            <tr>
+              <td>{{ forloop.counter}}</td>
+              <td>{{peop.name}}</td>
+              <td>{{peop.age}}</td>
+            </tr>
+           
+            
+            {% endfor %}
+          </table>
+          <a href="about/">
+                about
+          </a>
+        
+        <script src="" async defer></script>
+    </body>
+    
+</html>
+{%  endblock %}

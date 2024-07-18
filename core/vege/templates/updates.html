@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            background-image: url('path/to/your/background-image.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .navbar {
+            background-color: #343a40; /* Dark navbar background */
+        }
+        .navbar-brand {
+            color: #ffffff; /* White navbar text */
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff; /* White navbar links */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa; /* Light gray hover color */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Recipe App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="show.html">Recipes</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <form class="needs-validation" novalidate method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2 class="mb-4 text-center">Add Recipe</h2>
+                <div class="form-group">
+                    <label for="recipeName">Recipe Name</label>
+                    <input name="rname"  value ="{{recipies.rname}}" required type="text" class="form-control" id="recipeName">
+                    <div class="invalid-feedback">
+                        Please enter a recipe name.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recipeDescription">Recipe Description</label>
+                    <textarea class="form-control" name="rdesc" required id="recipeDescription">{{recipies.rdesc}}</textarea>
+                    <div class="invalid-feedback">
+                        Please enter a recipe description.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recipeImage">Recipe Image</label>
+                    <input name="rimage" value ="{{recipies.rimage}}" type="file" class="form-control-file" id="recipeImage">
+                </div>
+                <button type="submit" class="btn btn-success btn-block">Update Recipe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+    </script>
+</body>
+</html>

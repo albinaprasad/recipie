@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show.html</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef; /* Light gray background */
+            font-family: Arial, sans-serif;
+        }
+    
+        .container {
+            background-color: ##e9ecef;
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        .table {
+            background-color: #ffffff; /* White background for table */
+        }
+        .table th, .table td {
+            vertical-align: middle; /* Center content vertically */
+        }
+        .table th {
+            background-color: #343a40; /* Dark background for table headers */
+            color: #ffffff; /* White text color */
+        }
+        .table-striped-columns tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa; /* Alternate row background color */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Recipe App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">Recipes</a>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="mt-5">
+        <div class="mx-auto col-6 nb-3">
+            <form>
+            <label for="recipeName"> SEARCH RECIEPE</label>
+            <input name="search_r"  class="form-control" >
+            <button type="submit" class="btn btn-primary m-2 ">SEARCH</button>
+        </div>
+    </form>
+    </div>
+    <div class="container mt-4">
+        <h2 class="mb-4">Recipes List</h2>
+        <table class="table table-striped-columns table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Recipe Name</th>
+                    <th scope="col">Recipe Description</th>
+                    <th scope="col">Recipe Image</th>
+                    <th scope="col">ACTION</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for reci in recipies %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ reci.rname }}</td>
+                    <td>{{ reci.rdesc }}</td>
+                    
+                    <td><img src="/media/{{ reci.rimage }}" class="img-thumbnail" style="height:200px" ></td>
+                        <td>
+                           <a href="/delete_recipie/{{reci.id}}" class="btn btn-danger m-2">DELETE</a>
+                           <a href="/update_items/{{reci.id}}" class="btn btn-success m-2">UPDATE</a>
+                        </td>   
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
